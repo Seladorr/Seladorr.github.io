@@ -1,0 +1,10 @@
+title: Shreyash Kumar
+description: Software engineer at Goldman Sachs — systems security and low-level performance.
+url: https://seladorr.github.io
+author: Shreyash Kumar
+
+# This site is a single hand-written page served through GitHub Pages' Jekyll build.
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
