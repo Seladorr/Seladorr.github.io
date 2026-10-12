@@ -9,6 +9,5 @@ theme toggle.
 - `index.html` — the page
 - `_config.yml` — Jekyll/site config
 - `pics/` — profile and travel photos
-- `cv.pdf` — résumé
 
 To edit, change `index.html` and push; GitHub Pages rebuilds automatically.
