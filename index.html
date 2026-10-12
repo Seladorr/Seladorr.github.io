@@ -161,6 +161,17 @@
   .prose h3:first-child{margin-top:0}
   .prose p{margin:0 0 1.1em}.prose p:last-child{margin-bottom:0}
   .prose em{color:var(--fg);font-style:italic}
+  /* writing — blog index */
+  .posts{display:flex;flex-direction:column;gap:16px;margin-top:4px}
+  .post-card{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:14px;padding:clamp(18px,3.5vw,26px);background:var(--surface);box-shadow:var(--shadow);cursor:pointer;transition:border-color .2s,transform .2s}
+  .post-card:hover{border-color:var(--ring);transform:translateY(-2px)}
+  .post-card:hover .post-more{color:var(--fg)}
+  .post-meta{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:var(--accent-ink);margin-bottom:9px}
+  .post-title{font-family:var(--font-display);font-weight:700;font-size:clamp(1.3rem,3.2vw,1.72rem);line-height:1.12;letter-spacing:-.01em;color:var(--name);margin:0 0 8px;text-wrap:balance}
+  .post-dek{color:var(--fg-soft);font-size:1rem;margin:0 0 13px;line-height:1.5}
+  .post-more{font-family:var(--font-mono);font-size:.76rem;color:var(--accent-ink);transition:color .18s}
+  .back-link{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:.76rem;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;margin-bottom:24px;transition:color .18s}
+  .back-link:hover{color:var(--fg)}
 
   /* travels gallery */
   .trips{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,208px),1fr));gap:16px}
@@ -343,17 +354,31 @@
 
 <!-- WRITING -->
 <main class="page wrap" id="tab-writing" hidden>
-  <h1 class="ptitle-lg">Writing</h1>
-  <p class="psub">The occasional essay, on whatever I happen to be thinking about. To start, a piece from a philosophy course.</p>
 
-  <article class="essay">
+  <!-- index -->
+  <div id="writing-list">
+    <h1 class="ptitle-lg">Writing</h1>
+    <p class="psub">The occasional essay, on whatever I happen to be thinking about.</p>
+    <div class="posts">
+      <a class="post-card" data-post="divine" href="#writing">
+        <div class="post-meta">Philosophy of Religion · IIT Kanpur · 2025</div>
+        <h2 class="post-title">The Divine in Indian Philosophy</h2>
+        <p class="post-dek">Immanence, experience, and the search for meaning in a silent world.</p>
+        <span class="post-more">Read →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- full post -->
+  <article class="essay post-view" id="post-divine" hidden>
+    <button class="back-link" type="button" data-back>← All writing</button>
     <header class="essay-head">
       <div class="essay-kicker">Philosophy of Religion · IIT Kanpur · 2025</div>
       <h2 class="essay-title">The Divine in Indian Philosophy</h2>
       <p class="essay-dek">Immanence, experience, and the search for meaning in a silent world.</p>
       <p class="essay-note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-        <span>Written by hand and submitted as part of my Philosophy of Religion course. Transcribed here with only light edits for flow — the words and the argument are my own.</span>
+        <span>Written and submitted as part of my Philosophy of Religion course at IIT Kanpur.</span>
       </p>
     </header>
 
@@ -417,12 +442,24 @@
     if(b)b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem("sk-theme",n);}catch(e){}});
 
     var TABS=["home","experience","projects","writing","travels"];
+    function writingList(){
+      var l=document.getElementById("writing-list");if(l)l.hidden=false;
+      document.querySelectorAll("#tab-writing .post-view").forEach(function(a){a.hidden=true;});
+    }
+    function openPost(id){
+      var l=document.getElementById("writing-list");if(l)l.hidden=true;
+      document.querySelectorAll("#tab-writing .post-view").forEach(function(a){a.hidden=(a.id!=="post-"+id);});
+      window.scrollTo(0,0);
+    }
     function show(id){
       if(TABS.indexOf(id)<0)id="home";
       TABS.forEach(function(t){var el=document.getElementById("tab-"+t);if(el)el.hidden=(t!==id);});
       document.querySelectorAll(".nav-links a.tab").forEach(function(a){a.classList.toggle("active",a.getAttribute("data-tab")===id);});
+      writingList();
       window.scrollTo(0,0);
     }
+    document.querySelectorAll(".post-card").forEach(function(c){c.addEventListener("click",function(e){e.preventDefault();openPost(c.getAttribute("data-post"));});});
+    document.querySelectorAll("[data-back]").forEach(function(b){b.addEventListener("click",function(){writingList();window.scrollTo(0,0);});});
     function fromHash(){show((location.hash||"").replace(/^#/,"")||"home");}
     window.addEventListener("hashchange",fromHash);
     // in-page links that jump to a tab
