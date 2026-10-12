@@ -81,7 +81,7 @@
   .block{margin-top:clamp(32px,6vw,48px)}
 
   /* home intro — photo beside text */
-  .intro{display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,4.5vw,42px);align-items:center;margin-bottom:6px}
+  .intro{display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,4.5vw,42px);align-items:start;margin-bottom:6px}
   .portrait{--sz:clamp(144px,30vw,204px);width:var(--sz);height:var(--sz);border-radius:20px;flex-shrink:0;position:relative;background:var(--surface-2);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
   .portrait::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(150deg,var(--accent),transparent 62%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.8}
   .portrait img{width:100%;height:100%;object-fit:cover;display:block}
@@ -93,6 +93,16 @@
   .bio a,.inline-link{color:var(--accent-ink);text-decoration:none;border-bottom:1px solid var(--ring);cursor:pointer}
   .bio a:hover,.inline-link:hover{color:var(--fg)}
   @media (max-width:560px){.intro{grid-template-columns:1fr;gap:18px}.portrait{--sz:132px}}
+  .intro-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:22px}
+  .cv-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.82rem;padding:9px 15px;border-radius:9px;background:var(--accent);border:1px solid var(--accent);color:#F7F5FB;text-decoration:none;transition:background .18s,transform .18s}
+  .cv-btn svg{width:15px;height:15px}
+  .cv-btn:hover{background:var(--accent-ink);transform:translateY(-1px)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cv-btn{color:#1C1430}}
+  :root[data-theme="dark"] .cv-btn{color:#1C1430}
+  :root[data-theme="light"] .cv-btn{color:#F7F5FB}
+  .il-sep{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--font-mono);font-size:.82rem}
+  .il-sep a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:color .18s,border-color .18s}
+  .il-sep a:hover{color:var(--fg);border-color:var(--ring)}
 
   /* interests — KPI tiles */
   .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:12px}
@@ -188,11 +198,20 @@
     <div class="portrait"><img src="pics/profile.jpg" alt="Shreyash Kumar" width="560" height="560"></div>
     <div class="intro-text">
       <div class="role">Software Engineer · Goldman Sachs</div>
-      <div class="where">Hyderabad, India</div>
+      <div class="where">Hyderabad, India · <span class="inline-link" id="emailLink">kshreyash23@gmail.com</span></div>
       <h1 class="hello">Hello, I'm Shreyash.</h1>
       <div class="bio">
-        <p>I'm a software engineer at Goldman Sachs, working on backend systems for fund operations. Before that I did security research — side-channels in the Linux kernel at CISPA, and cache attacks on post-quantum signatures at IIT Kanpur, where I studied Electrical Engineering.</p>
-        <p>Find me on <a href="https://github.com/Seladorr" target="_blank" rel="noopener">GitHub</a> and <a href="https://www.linkedin.com/in/shreyash-kumar" target="_blank" rel="noopener">LinkedIn</a>, read my <a href="https://drive.google.com/file/d/12qvi_sABQPEfEu9bZsVqg2xWqrkEZwvO/view?usp=sharing" target="_blank" rel="noopener">CV</a>, or say hello by <span class="inline-link" id="emailLink">email</span>.</p>
+        <p>I'm a software engineer at Goldman Sachs in Hyderabad, building backend systems for fund operations — AWS workflows that cut fund onboarding from days to under a minute, a recursive Java/SQL API for fee-rate discounts over nested fund hierarchies, and a reporting pipeline that took a 24-hour job down to seconds.</p>
+        <p>Before this I spent a couple of years on the research side of security. At CISPA I hunted for micro-architectural side-channels in the Linux kernel — reverse-engineering Intel's user-interrupt framework on Sapphire Rapids and building a timing channel that reads a neighbouring core's frequency from user space. At IIT Kanpur, with Prof. Angshuman Karmakar, I worked on cache attacks against post-quantum signatures, including a Prime+Probe on LESS that reconstructs the secret permutation. Along the way I also did automotive security at Jaguar Land Rover and C3iHub, and a summer of reinforcement learning for guidance at DCode Lab.</p>
+        <p>I did my B.Tech in Electrical Engineering at IIT Kanpur, with minors in Computer Systems, Machine Learning, and Philosophy. I like turning a fuzzy problem into a concrete experiment, building whatever infrastructure it needs, and writing down what I learn along the way.</p>
+        <p>Outside work I'm usually on a volleyball court, planning the next trip, or behind a camera. At IIT Kanpur I played on the volleyball team, led the Games &amp; Sports Council, and founded the campus E-Sports club — so there's usually a game going somewhere.</p>
+      </div>
+      <div class="intro-links">
+        <a class="cv-btn" href="https://drive.google.com/file/d/12qvi_sABQPEfEu9bZsVqg2xWqrkEZwvO/view?usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Read my CV</a>
+        <span class="il-sep">
+          <a href="https://github.com/Seladorr" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/shreyash-kumar" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </span>
       </div>
     </div>
   </div>
