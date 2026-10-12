@@ -143,10 +143,24 @@
   .plink:hover{border-color:var(--ring);color:var(--fg)}
   @media (max-width:520px){.pub{grid-template-columns:46px 1fr;gap:13px}.thumb{width:46px;height:46px}.thumb svg{width:24px;height:24px}}
 
-  /* empty-state (writing, travels) */
+  /* empty-state (travels) */
   .empty{border:1px dashed var(--border);border-radius:14px;padding:clamp(26px,6vw,40px);background:var(--surface);color:var(--fg-soft);max-width:56ch}
   .empty .tag{display:inline-block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);border:1px solid var(--border);border-radius:6px;padding:3px 9px;margin-bottom:14px}
   .empty p{margin:0 0 .7em}.empty p:last-child{margin-bottom:0}
+
+  /* writing — essay */
+  .essay{max-width:66ch}
+  .essay-head{padding-bottom:clamp(20px,4vw,28px);border-bottom:1px solid var(--border);margin-bottom:clamp(24px,5vw,34px)}
+  .essay-kicker{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:12px}
+  .essay-title{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,4.6vw,2.4rem);line-height:1.08;letter-spacing:-.02em;color:var(--name);margin:0 0 10px;text-wrap:balance}
+  .essay-dek{color:var(--fg-soft);font-size:1.08rem;font-style:italic;margin:0 0 16px}
+  .essay-note{display:flex;gap:11px;font-family:var(--font-mono);font-size:.73rem;color:var(--muted);line-height:1.55;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:0}
+  .essay-note svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;color:var(--accent-ink)}
+  .prose{color:var(--fg-soft);font-size:1.05rem;line-height:1.78}
+  .prose h3{font-family:var(--font-display);font-weight:600;font-size:1.18rem;color:var(--fg);margin:1.9em 0 .5em;letter-spacing:-.01em}
+  .prose h3:first-child{margin-top:0}
+  .prose p{margin:0 0 1.1em}.prose p:last-child{margin-bottom:0}
+  .prose em{color:var(--fg);font-style:italic}
 
   /* travels gallery */
   .trips{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,208px),1fr));gap:16px}
@@ -330,12 +344,41 @@
 <!-- WRITING -->
 <main class="page wrap" id="tab-writing" hidden>
   <h1 class="ptitle-lg">Writing</h1>
-  <p class="psub">Notes and essays on systems, security, and things I'm figuring out.</p>
-  <div class="empty">
-    <span class="tag">Coming soon</span>
-    <p>I'm putting this together. Expect short write-ups on cache side-channels, low-level performance, and the occasional tangent.</p>
-    <p>In the meantime, the <span class="inline-link" data-goto="projects">projects</span> page has the technical reports I've written.</p>
-  </div>
+  <p class="psub">The occasional essay, on whatever I happen to be thinking about. To start, a piece from a philosophy course.</p>
+
+  <article class="essay">
+    <header class="essay-head">
+      <div class="essay-kicker">Philosophy of Religion · IIT Kanpur · 2025</div>
+      <h2 class="essay-title">The Divine in Indian Philosophy</h2>
+      <p class="essay-dek">Immanence, experience, and the search for meaning in a silent world.</p>
+      <p class="essay-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        <span>Written by hand and submitted as part of my Philosophy of Religion course. Transcribed here with only light edits for flow — the words and the argument are my own.</span>
+      </p>
+    </header>
+
+    <div class="prose">
+      <h3>The concept of God in Hindu thought</h3>
+      <p>In Indian philosophy, the concept of God is quite different from Western, especially Semitic, religious ideas. In Hinduism, in the Sruti tradition, Isvara is not seen as the sole creator of the universe or its final controller. His role is to explain certain religious experiences or phenomena, not to account for the whole of existence; in that sense Isvara is seen as dependent. Hinduism traditionally does not set out to prove the existence of Isvara.</p>
+      <p>A more theistic idea of God developed later, in the Smruti tradition. This God is more personal, closer in devotion to the Christian God. Yet even though Smruti portrays Bhagwan as both immanent and transcendent, He is not the ultimate explanation of the universe. Doctrinally, Brahman and God remain distinct concepts.</p>
+      <p>The divine is not limited to humanity but extends across all physical and spiritual realms. Everything that exists is permeated by the divine. Consequently, proving the divine's existence is not necessary within Hinduism, since the divine is understood through direct experience rather than logical reasoning. Philosophers argue that the divine, while manifested within the world, must be known through Sruti, because rational understanding alone is insufficient. Attempts to prove or disprove God focus mainly on problems like creation or cosmology; these debates, however, do not touch the underlying presence of the divine, which is approached through experience rather than argument.</p>
+      <p>The Nyaya school does offer logical arguments for God's existence, but they are considered marginal. There is no central, formal argument meant to prove God, and Smruti texts like the Bhagavata Purana emphasise devotion over logical proof. To understand the divine is to understand both its immanence and its transcendence: the divine is present within everything, and also present beyond space and time.</p>
+      <p>Some philosophical arguments reject the idea that the world must have a cause (God) at all. They hold that if the world is infinite, it needs no creator; and that the world can be seen as made of simpler elements that are themselves uncaused and eternal.</p>
+      <p>Hinduism recognises that the heart's experience cannot be fully judged by intellectual reasoning. If a person feels the presence of God internally, that experience is valid for them, regardless of whether it can be rationally explained. Devotional life is therefore meaningful: God functions as a support during existential crises, a mental anchor for human beings. Sankara suggests that for those who cannot envision the subtle Brahman, the idea of a personal God serves as a stepping stone, and the symbolic and emotional importance of God is fully acknowledged.</p>
+      <p>Since no single concept of God fully explains the world, none is treated as ultimately sufficient. Still, God's role remains important for explaining the authority of Smruti and the workings of karma, and in sectarian traditions like Vaishnavism and Saivism efforts are made to explain the world through God's action. Hindu philosophy thus treats the idea of God in a complex, layered way.</p>
+
+      <h3>The immanence of the divine</h3>
+      <p>One striking feature of this view is how the immanence of the divine challenges the traditional Western distinction between Creator and creation. Because the divine is seen as existing in all forms, the world is not something separate from divine reality. This is why proof of the divine's existence is not central to Hindu thought; the divine is instead manifested within existence itself. It is what makes Hindu metaphysics more experiential than theological.</p>
+
+      <h3>Isvara and the divine are distinct</h3>
+      <p>At the same time, Isvara and the divine are distinct. While devotional practice focuses on a personal God, the ultimate reality lies beyond such personifications, and the divine is not affected by the existence of any personal or non-personal deity. This preserves the philosophical rigour of Brahman while still validating human emotional needs through a personal God.</p>
+
+      <h3>A personal reflection</h3>
+      <p>The attempt to link all of existence to a divine essence provides a sense of meaning that comforts human consciousness, but it may reflect a deep human need rather than an objective feature of reality. From an existentialist standpoint, the world simply <em>is</em>. The search for an immanent divine is, in some sense, a human imposition of meaning upon an otherwise silent world.</p>
+      <p>While the human longing for divine presence is understandable, it might ultimately be a projection of our desire for permanence and purpose against the overwhelming nothingness of reality. As existentialists like Sartre or Camus suggest, it is up to each of us to create meaning in this indifferent cosmos.</p>
+      <p>So although the idea of divine immanence is rich, I would argue that the divine, if it exists at all, is utterly unknowable and indifferent to human concerns. And if it does not exist, then it is still up to us to create meaning in this life.</p>
+    </div>
+  </article>
 </main>
 
 <!-- TRAVELS -->
