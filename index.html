@@ -20,28 +20,28 @@
      (projects, experience, writing, travels) swap in. Cool slate neutrals, one teal accent;
      Fraunces display, DM Sans body, DM Mono labels. */
   :root{
-    --bg:#ECEBF1;--surface:#F5F4F8;--surface-2:#E3E1EC;--fg:#353143;--fg-soft:#585469;
-    --muted:#817E90;--border:#DAD7E3;--accent:#7D6CA6;--accent-ink:#5F4E89;
-    --accent-soft:rgba(125,108,166,.12);--ring:rgba(125,108,166,.32);
-    --shadow:0 1px 2px rgba(45,40,60,.03),0 10px 28px -18px rgba(45,40,60,.14);
+    --bg:#F4F3F7;--surface:#FBFBFD;--surface-2:#E8E7EF;--fg:#2B2B33;--fg-soft:#4E4E59;
+    --muted:#84848E;--border:#E0DFE8;--name:#6B5CA0;--accent:#2E8C72;--accent-ink:#1F6E52;
+    --accent-soft:rgba(46,140,114,.12);--ring:rgba(46,140,114,.30);
+    --shadow:0 1px 2px rgba(40,38,55,.03),0 10px 28px -18px rgba(40,38,55,.14);
     --font-display:"Fraunces",Georgia,"Times New Roman",serif;
     --font-body:"DM Sans","Segoe UI",system-ui,sans-serif;
     --font-mono:"DM Mono",ui-monospace,Consolas,monospace;
-    --maxw:780px;
+    --maxw:900px;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --bg:#17161D;--surface:#1E1C27;--surface-2:#262432;--fg:#D3CFDC;--fg-soft:#A4A0B3;
-      --muted:#817E8F;--border:#2D2A38;--accent:#A896CE;--accent-ink:#BCACE0;
-      --accent-soft:rgba(168,150,206,.13);--ring:rgba(168,150,206,.36);
-      --shadow:0 1px 2px rgba(0,0,0,.24),0 12px 30px -18px rgba(0,0,0,.52);color-scheme:dark;
+      --bg:#0E0E12;--surface:#16161C;--surface-2:#1F1F27;--fg:#D8D9DF;--fg-soft:#B2B3BD;
+      --muted:#878791;--border:#272730;--name:#BCB1E8;--accent:#77D9BA;--accent-ink:#8FE3C8;
+      --accent-soft:rgba(119,217,186,.13);--ring:rgba(119,217,186,.30);
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -20px rgba(0,0,0,.6);color-scheme:dark;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#17161D;--surface:#1E1C27;--surface-2:#262432;--fg:#D3CFDC;--fg-soft:#A4A0B3;
-    --muted:#817E8F;--border:#2D2A38;--accent:#A896CE;--accent-ink:#BCACE0;
-    --accent-soft:rgba(168,150,206,.13);--ring:rgba(168,150,206,.36);
-    --shadow:0 1px 2px rgba(0,0,0,.24),0 12px 30px -18px rgba(0,0,0,.52);color-scheme:dark;
+    --bg:#0E0E12;--surface:#16161C;--surface-2:#1F1F27;--fg:#D8D9DF;--fg-soft:#B2B3BD;
+    --muted:#878791;--border:#272730;--name:#BCB1E8;--accent:#77D9BA;--accent-ink:#8FE3C8;
+    --accent-soft:rgba(119,217,186,.13);--ring:rgba(119,217,186,.30);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -20px rgba(0,0,0,.6);color-scheme:dark;
   }
 
   *{box-sizing:border-box}
@@ -60,7 +60,7 @@
   .nav-links::-webkit-scrollbar{display:none}
   .nav-links a{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);text-decoration:none;transition:color .18s;cursor:pointer}
   .nav-links a:hover{color:var(--fg)}
-  .nav-links a.active{color:var(--fg)}
+  .nav-links a.active{color:var(--accent-ink)}
   .nav-links a.active::after{content:"";display:block;height:2px;background:var(--accent);border-radius:2px;margin-top:3px}
   .nav-links a.cv-link{color:var(--accent-ink)}
   .toggle{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--border);border-radius:9px;background:var(--surface);color:var(--fg-soft);cursor:pointer;transition:border-color .18s,color .18s;flex-shrink:0}
@@ -74,35 +74,33 @@
 
   /* tab pages */
   .page{padding-block:clamp(40px,7vw,64px) clamp(44px,8vw,72px)}
-  .ptitle-lg{font-family:var(--font-display);font-weight:600;font-size:clamp(1.7rem,4.5vw,2.3rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 10px;text-wrap:balance}
+  .ptitle-lg{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.04;letter-spacing:-.02em;color:var(--name);margin:0 0 10px;text-wrap:balance}
   .psub{color:var(--muted);font-size:1rem;margin:0 0 30px;max-width:56ch}
   .eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);display:flex;align-items:center;gap:10px;margin:0 0 18px}
   .eyebrow .rule{flex:1;height:1px;background:var(--border)}
   .block{margin-top:clamp(32px,6vw,48px)}
 
-  /* home intro — photo beside text */
-  .intro{display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,4.5vw,42px);align-items:start;margin-bottom:6px}
-  .portrait{--sz:clamp(144px,30vw,204px);width:var(--sz);height:var(--sz);border-radius:20px;flex-shrink:0;position:relative;background:var(--surface-2);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
-  .portrait::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(150deg,var(--accent),transparent 62%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.8}
-  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
-  .intro-text .role{font-family:var(--font-mono);font-size:.8rem;color:var(--accent-ink);margin-bottom:5px}
-  .intro-text .where{font-family:var(--font-mono);font-size:.76rem;color:var(--muted)}
-  h1.hello{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,5vw,2.7rem);line-height:1.05;letter-spacing:-.015em;margin:13px 0;text-wrap:balance}
-  .bio{max-width:60ch;color:var(--fg-soft);font-size:1.02rem;line-height:1.62}
-  .bio p{margin:0 0 .8em}.bio p:last-child{margin-bottom:0}
+  /* home hero — big name, photo floated right */
+  h1.name{font-family:var(--font-display);font-weight:700;font-size:clamp(2.5rem,8.5vw,5rem);line-height:.96;letter-spacing:-.02em;color:var(--name);margin:0 0 12px;text-wrap:balance}
+  .tagline{font-family:var(--font-body);font-weight:500;font-size:clamp(1.05rem,2.3vw,1.3rem);color:var(--muted);margin:0 0 clamp(26px,5vw,38px)}
+  .lede{overflow:hidden}
+  .portrait{float:right;width:clamp(188px,32%,288px);margin:4px 0 20px 32px}
+  .portrait img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .portrait figcaption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);margin-top:12px;line-height:1.55}
+  .eyebrow-hello{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:16px}
+  .bio{color:var(--fg-soft);font-size:1.05rem;line-height:1.7}
+  .bio p{margin:0 0 1em}.bio p:last-child{margin-bottom:0}
   .bio a,.inline-link{color:var(--accent-ink);text-decoration:none;border-bottom:1px solid var(--ring);cursor:pointer}
   .bio a:hover,.inline-link:hover{color:var(--fg)}
-  @media (max-width:560px){.intro{grid-template-columns:1fr;gap:18px}.portrait{--sz:132px}}
-  .intro-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:22px}
-  .cv-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.82rem;padding:9px 15px;border-radius:9px;background:var(--accent);border:1px solid var(--accent);color:#F7F5FB;text-decoration:none;transition:background .18s,transform .18s}
-  .cv-btn svg{width:15px;height:15px}
-  .cv-btn:hover{background:var(--accent-ink);transform:translateY(-1px)}
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cv-btn{color:#1C1430}}
-  :root[data-theme="dark"] .cv-btn{color:#1C1430}
-  :root[data-theme="light"] .cv-btn{color:#F7F5FB}
-  .il-sep{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--font-mono);font-size:.82rem}
-  .il-sep a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:color .18s,border-color .18s}
-  .il-sep a:hover{color:var(--fg);border-color:var(--ring)}
+  .intro-links{display:flex;flex-wrap:wrap;align-items:center;gap:13px;margin-top:28px;clear:both}
+  .cv-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.82rem;padding:10px 17px;border-radius:9px;background:var(--accent);border:1px solid var(--accent);color:#F3FBF8;text-decoration:none;transition:filter .18s,transform .18s}
+  .cv-btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cv-btn{color:#08302A}}
+  :root[data-theme="dark"] .cv-btn{color:#08302A}
+  :root[data-theme="light"] .cv-btn{color:#F3FBF8}
+  .ghost-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.82rem;padding:10px 16px;border-radius:9px;border:1px solid var(--border);color:var(--fg);text-decoration:none;transition:border-color .18s,transform .18s}
+  .ghost-btn:hover{border-color:var(--ring);transform:translateY(-1px)}
+  @media (max-width:560px){.portrait{float:none;width:100%;max-width:280px;margin:0 0 20px}}
 
   /* interests — KPI tiles */
   .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:12px}
@@ -194,25 +192,23 @@
 
 <!-- HOME -->
 <main class="page wrap" id="tab-home">
-  <div class="intro">
-    <div class="portrait"><img src="pics/profile.jpg" alt="Shreyash Kumar" width="560" height="560"></div>
-    <div class="intro-text">
-      <div class="role">Software Engineer · Goldman Sachs</div>
-      <div class="where">Hyderabad, India · <span class="inline-link" id="emailLink">kshreyash23@gmail.com</span></div>
-      <h1 class="hello">Hello, I'm Shreyash.</h1>
-      <div class="bio">
-        <p>I'm a software engineer at Goldman Sachs in Hyderabad, building backend systems for fund operations — AWS workflows that cut fund onboarding from days to under a minute, a recursive Java/SQL API for fee-rate discounts over nested fund hierarchies, and a reporting pipeline that took a 24-hour job down to seconds.</p>
-        <p>Before this I spent a couple of years on the research side of security. At CISPA I hunted for micro-architectural side-channels in the Linux kernel — reverse-engineering Intel's user-interrupt framework on Sapphire Rapids and building a timing channel that reads a neighbouring core's frequency from user space. At IIT Kanpur, with Prof. Angshuman Karmakar, I worked on cache attacks against post-quantum signatures, including a Prime+Probe on LESS that reconstructs the secret permutation. Along the way I also did automotive security at Jaguar Land Rover and C3iHub, and a summer of reinforcement learning for guidance at DCode Lab.</p>
-        <p>I did my B.Tech in Electrical Engineering at IIT Kanpur, with minors in Computer Systems, Machine Learning, and Philosophy. I like turning a fuzzy problem into a concrete experiment, building whatever infrastructure it needs, and writing down what I learn along the way.</p>
-        <p>Outside work I'm usually on a volleyball court, planning the next trip, or behind a camera. At IIT Kanpur I played on the volleyball team, led the Games &amp; Sports Council, and founded the campus E-Sports club — so there's usually a game going somewhere.</p>
-      </div>
-      <div class="intro-links">
-        <a class="cv-btn" href="https://drive.google.com/file/d/12qvi_sABQPEfEu9bZsVqg2xWqrkEZwvO/view?usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Read my CV</a>
-        <span class="il-sep">
-          <a href="https://github.com/Seladorr" target="_blank" rel="noopener">GitHub ↗</a>
-          <a href="https://www.linkedin.com/in/shreyash-kumar" target="_blank" rel="noopener">LinkedIn ↗</a>
-        </span>
-      </div>
+  <h1 class="name">Shreyash Kumar</h1>
+  <p class="tagline">Software Engineer at Goldman Sachs · Systems &amp; low-level performance</p>
+  <div class="lede">
+    <figure class="portrait">
+      <img src="pics/profile.jpg" alt="Shreyash Kumar" width="560" height="560">
+      <figcaption>Hyderabad, India · ✉ <span class="inline-link" id="emailLink">kshreyash23@gmail.com</span></figcaption>
+    </figure>
+    <div class="eyebrow-hello">Hello, I'm Shreyash.</div>
+    <div class="bio">
+      <p>I'm a software engineer at <a href="https://www.goldmansachs.com" target="_blank" rel="noopener">Goldman Sachs</a> in Hyderabad, building backend systems for fund operations — AWS workflows that cut fund onboarding from days to under a minute, a recursive Java/SQL API for fee-rate discounts over nested fund hierarchies, and a reporting pipeline that took a 24-hour job down to seconds.</p>
+      <p>Before this I spent a couple of years on the research side of security. At <a href="https://cispa.de" target="_blank" rel="noopener">CISPA</a> I hunted for micro-architectural side-channels in the Linux kernel — reverse-engineering Intel's user-interrupt framework on Sapphire Rapids and building a timing channel that reads a neighbouring core's frequency from user space. At <a href="https://www.iitk.ac.in" target="_blank" rel="noopener">IIT Kanpur</a>, with Prof. Angshuman Karmakar, I worked on cache attacks against post-quantum signatures, including a Prime+Probe on LESS that reconstructs the secret permutation. Along the way I also did automotive security at Jaguar Land Rover and C3iHub, and a summer of reinforcement learning for guidance at DCode Lab.</p>
+      <p>I did my B.Tech in Electrical Engineering at IIT Kanpur, with minors in Computer Systems, Machine Learning, and Philosophy. I like turning a fuzzy problem into a concrete experiment, building whatever infrastructure it needs, and writing down what I learn along the way.</p>
+      <p>Outside work I'm usually on a volleyball court, planning the next trip, or behind a camera. At IIT Kanpur I played on the volleyball team, led the Games &amp; Sports Council, and founded the campus E-Sports club — so there's usually a game going somewhere.</p>
+    </div>
+    <div class="intro-links">
+      <a class="cv-btn" href="https://drive.google.com/file/d/12qvi_sABQPEfEu9bZsVqg2xWqrkEZwvO/view?usp=sharing" target="_blank" rel="noopener">View CV ↗</a>
+      <a class="ghost-btn" href="#projects">See my work →</a>
     </div>
   </div>
 
